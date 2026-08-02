@@ -61,8 +61,7 @@ async function loadReleases() {
       // Clear the "Loading..." text
       releaseNotes.innerHTML = "";
       
-      // We'll remove the 'card' class from the parent container in update.html 
-      // so we can generate multiple distinct cards for each update.
+      // Remove the 'card' class from parent container so we can generate multiple distinct cards
       releaseNotes.className = "cards"; 
       releaseNotes.style.gridTemplateColumns = "1fr"; // Stack them vertically
 
@@ -70,6 +69,7 @@ async function loadReleases() {
       const recentReleases = releases.slice(0, 5);
 
       recentReleases.forEach(release => {
+        // Fixed: replaced raw line break with "<br>"
         const bodyText = release.body ? release.body.replace(/\n/g, "<br>") : "No release notes available.";
         const date = new Date(release.published_at).toLocaleDateString();
 
